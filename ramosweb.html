@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeremy E. Ramos - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 150px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            opacity: 0.1;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #ff6b6b);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientFlow 3s linear infinite;
+        }
+        @keyframes gradientFlow {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        .hero .btn {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+        .hero .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .skill-badge {
+            display: inline-block;
+            background: rgba(255, 107, 107, 0.1);
+            border: 2px solid rgba(255, 107, 107, 0.5);
+            border-radius: 50px;
+            padding: 12px 25px;
+            margin: 0 15px;
+            font-size: 0.95rem;
+            animation: float 3s ease-in-out infinite;
+            transition: all 0.3s;
+        }
+        .skill-badge:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        .skill-badge:nth-child(3) {
+            animation-delay: 1s;
+        }
+        .skill-badge:hover {
+            transform: scale(1.1);
+            border-color: #4ecdc4;
+            background: rgba(78, 205, 196, 0.2);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        .interactive-orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 107, 107, 0.4), rgba(78, 205, 196, 0.1));
+            filter: blur(40px);
+            animation: orbFloat 8s ease-in-out infinite;
+        }
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: -50px;
+            animation-duration: 10s;
+        }
+        .orb-2 {
+            width: 250px;
+            height: 250px;
+            bottom: -50px;
+            left: -100px;
+            animation-duration: 12s;
+            animation-delay: 2s;
+        }
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+        .cta-text {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 30px 0;
+            min-height: 70px;
+            letter-spacing: 2px;
+        }
+        .section {
+            padding: 100px 0;
+            background: #0a0a0a;
+            color: #ffffff;
+        }
+        .section:nth-child(even) {
+            background: #111111;
+        }
+        .section h2 {
+            font-size: 3rem;
+            margin-bottom: 50px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            transition: all 0.3s;
+            color: #ffffff;
+            backdrop-filter: blur(10px);
+        }
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-color: #ff6b6b;
+        }
+        .card img {
+            border-radius: 15px 15px 0 0;
+        }
+        .skill-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 25px;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+        .skill-fill {
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 2s ease-in-out;
+            position: relative;
+        }
+        .skill-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .contact-form .form-control {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border-radius: 10px;
+        }
+        .contact-form .form-control:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #ff6b6b;
+            color: #ffffff;
+        }
+        .contact-form .btn {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border: none;
+            border-radius: 50px;
+            padding: 15px 30px;
+            font-weight: 600;
+        }
+        footer {
+            background: #000000;
+            color: #ffffff;
+            padding: 30px 0;
+            text-align: center;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        .animate-on-scroll.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .background-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .particle-1 { width: 20px; height: 20px; }
+        .particle-2 { width: 15px; height: 15px; }
+        .particle-3 { width: 25px; height: 25px; }
+        .particle-4 { width: 10px; height: 10px; }
+        .particle-5 { width: 30px; height: 30px; }
+        .particle-6 { width: 18px; height: 18px; }
+        .particle-7 { width: 12px; height: 12px; }
+        .particle-8 { width: 22px; height: 22px; }
+        .particle-9 { width: 16px; height: 16px; }
+        .particle-10 { width: 28px; height: 28px; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .service-card i {
+            font-size: 3rem;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+        .testimonial {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        .testimonial .author {
+            font-weight: 600;
+            color: #4ecdc4;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Jeremy E. Ramos</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="background-particles">
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+        <div class="particle particle-4"></div>
+        <div class="particle particle-5"></div>
+        <div class="particle particle-6"></div>
+        <div class="particle particle-7"></div>
+        <div class="particle particle-8"></div>
+        <div class="particle particle-9"></div>
+        <div class="particle particle-10"></div>
+    </div>
+
+    <section class="hero">
+        <div class="interactive-orb orb-1"></div>
+        <div class="interactive-orb orb-2"></div>
+        <div class="container hero-content">
+            <h1 class="cta-text" id="typing-text"></h1>
+            <p>Creative Web Developer & Graphic Designer | Bringing Ideas to Life</p>
+            <div class="mb-4">
+                <span class="skill-badge">💻 Web Development</span>
+                <span class="skill-badge">🎨 Design</span>
+                <span class="skill-badge">✨ Creative</span>
+            </div>
+            <a href="#portfolio" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-outline-light ms-3">Get In Touch</a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 animate-on-scroll">
+                    <h2>About Me</h2>
+                    <p>I'm a 22-year-old aspiring web developer and graphic designer currently studying at Pamantasan ng Lungsod ng San Pablo. With a passion for technology and creativity, I aim to create innovative solutions that make a difference.</p>
+                    <p>My journey started from Zaballero Subdivision Elementary School and Gulang-Gulang National High School in Lucena City, Quezon. Now, I'm pursuing my college education in San Pablo City, Laguna.</p>
+                </div>
+                <div class="col-md-6 animate-on-scroll">
+                    <img src="https://via.placeholder.com/400x300" alt="Jeremy E. Ramos" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <h2>Services</h2>
+            <div class="services-grid animate-on-scroll">
+                <div class="service-card">
+                    <i class="fas fa-code"></i>
+                    <h4>Web Development</h4>
+                    <p>Creating responsive, modern websites using the latest technologies and best practices.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-palette"></i>
+                    <h4>Graphic Design</h4>
+                    <p>Designing eye-catching visuals, logos, and branding materials that tell your story.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h4>UI/UX Design</h4>
+                    <p>Crafting intuitive user interfaces and experiences that engage and convert visitors.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-search"></i>
+                    <h4>SEO Optimization</h4>
+                    <p>Improving your online visibility and driving more traffic to your digital presence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="text-center mb-5 animate-on-scroll">Skills</h2>
+            <div class="row">
+                <div class="col-md-6 animate-on-scroll">
+                    <h4>Web Development</h4>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 80%;"></div>
+                    </div>
+                    <h4>Graphic Design</h4>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="col-md-6 animate-on-scroll">
+                    <h4>Communication</h4>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 90%;"></div>
+                    </div>
+                    <h4>Problem Solving</h4>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 75%;"></div>
+                    </div>
+                    <h4>Time Management</h4>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section">
+        <div class="container">
+            <h2>My Portfolio</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4 animate-on-scroll">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/400x300/333/fff?text=E-commerce+Site" class="card-img-top" alt="E-commerce Website">
+                        <div class="card-body">
+                            <h5 class="card-title">E-commerce Website</h5>
+                            <p class="card-text">A fully responsive online store built with React and Node.js, featuring payment integration and admin dashboard.</p>
+                            <a href="#" class="btn btn-primary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 animate-on-scroll">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/400x300/333/fff?text=Brand+Identity" class="card-img-top" alt="Brand Identity Design">
+                        <div class="card-body">
+                            <h5 class="card-title">Brand Identity Design</h5>
+                            <p class="card-text">Complete branding package including logo, business cards, and marketing materials for a local startup.</p>
+                            <a href="#" class="btn btn-primary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 animate-on-scroll">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/400x300/333/fff?text=Mobile+App" class="card-img-top" alt="Mobile App UI">
+                        <div class="card-body">
+                            <h5 class="card-title">Mobile App UI Design</h5>
+                            <p class="card-text">Intuitive mobile app interface design for a fitness tracking application with modern UX principles.</p>
+                            <a href="#" class="btn btn-primary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 animate-on-scroll">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/400x300/333/fff?text=Portfolio+Site" class="card-img-top" alt="Portfolio Website">
+                        <div class="card-body">
+                            <h5 class="card-title">Portfolio Website</h5>
+                            <p class="card-text">A sleek, interactive portfolio website showcasing creative work with smooth animations and responsive design.</p>
+                            <a href="#" class="btn btn-primary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 animate-on-scroll">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/400x300/333/fff?text=Social+Media" class="card-img-top" alt="Social Media Graphics">
+                        <div class="card-body">
+                            <h5 class="card-title">Social Media Graphics</h5>
+                            <p class="card-text">Eye-catching social media posts and graphics designed to increase engagement and brand awareness.</p>
+                            <a href="#" class="btn btn-primary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 animate-on-scroll">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/400x300/333/fff?text=Dashboard" class="card-img-top" alt="Admin Dashboard">
+                        <div class="card-body">
+                            <h5 class="card-title">Admin Dashboard</h5>
+                            <p class="card-text">A comprehensive admin interface with data visualization, user management, and analytics features.</p>
+                            <a href="#" class="btn btn-primary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section">
+        <div class="container">
+            <h2>What Clients Say</h2>
+            <p style="text-align: center; font-size: 1.1rem; color: rgba(255, 255, 255, 0.7);">Coming soon...</p>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Let's Work Together</h2>
+            <div class="row">
+                <div class="col-md-6 animate-on-scroll">
+                    <h3>Get In Touch</h3>
+                    <p>Ready to bring your ideas to life? I'd love to hear about your project and discuss how we can work together.</p>
+                    <div class="mb-3">
+                        <i class="fas fa-envelope me-3"></i>
+                        <span>jeremyramos1904@gmail.com</span>
+                    </div>
+                    <div class="mb-3">
+                        <i class="fas fa-phone me-3"></i>
+                        <span>+63 963 321 284</span>
+                    </div>
+                    <div class="mb-3">
+                        <i class="fas fa-map-marker-alt me-3"></i>
+                        <span>Lucena City, Quezon, Philippines</span>
+                    </div>
+                </div>
+                <div class="col-md-6 animate-on-scroll">
+                    <form class="contact-form">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Jeremy E. Ramos. All rights reserved.</p>
+            <div class="mt-3">
+                <a href="mailto:jeremyramos1904@gmail.com" class="text-white me-4"><i class="fas fa-envelope fa-lg"></i></a>
+                <a href="#" class="text-white me-4"><i class="fab fa-facebook fa-lg"></i></a>
+                <a href="#" class="text-white me-4"><i class="fab fa-twitter fa-lg"></i></a>
+                <a href="#" class="text-white me-4"><i class="fab fa-linkedin fa-lg"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-github fa-lg"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+
+        // Skill bar animation
+        const skillBars = document.querySelectorAll('.skill-fill');
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.width = entry.target.style.width;
+                }
+            });
+        });
+
+        skillBars.forEach(bar => {
+            skillObserver.observe(bar);
+        });
+
+        // Interactive background particles
+        const particles = document.querySelectorAll('.particle');
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // Random floating animation
+        particles.forEach((particle, index) => {
+            let x = Math.random() * window.innerWidth;
+            let y = Math.random() * window.innerHeight;
+            let vx = (Math.random() - 0.5) * 2;
+            let vy = (Math.random() - 0.5) * 2;
+            
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            
+            function animateParticle() {
+                x += vx;
+                y += vy;
+                
+                if (x < 0 || x > window.innerWidth) vx = -vx;
+                if (y < 0 || y > window.innerHeight) vy = -vy;
+                
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                
+                requestAnimationFrame(animateParticle);
+            }
+            
+            animateParticle();
+        });
+
+        function updateParticles() {
+            particles.forEach((particle, index) => {
+                const rect = particle.getBoundingClientRect();
+                const particleX = rect.left + rect.width / 2;
+                const particleY = rect.top + rect.height / 2;
+                
+                const deltaX = mouseX - particleX;
+                const deltaY = mouseY - particleY;
+                const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                
+                if (distance < 100) {
+                    particle.style.opacity = '0.1';
+                    particle.style.transform = 'scale(1.5)';
+                } else {
+                    particle.style.opacity = '0.03';
+                    particle.style.transform = 'scale(1)';
+                }
+            });
+            
+            requestAnimationFrame(updateParticles);
+        }
+
+        updateParticles();
+
+        // Typing Animation for Hero
+        const typingText = document.getElementById('typing-text');
+        const fullText = 'Jeremy E. Ramos';
+        let typingIndex = 0;
+        let isDeleting = false;
+        const typingSpeed = 100;
+        const deletingSpeed = 80;
+        const pauseTime = 2000;
+
+        function typeAnimation() {
+            if (!isDeleting && typingIndex < fullText.length) {
+                typingText.textContent += fullText.charAt(typingIndex);
+                typingIndex++;
+                setTimeout(typeAnimation, typingSpeed);
+            } else if (!isDeleting && typingIndex === fullText.length) {
+                setTimeout(() => {
+                    isDeleting = true;
+                    typeAnimation();
+                }, pauseTime);
+            } else if (isDeleting && typingIndex > 0) {
+                typingText.textContent = fullText.substring(0, typingIndex - 1);
+                typingIndex--;
+                setTimeout(typeAnimation, deletingSpeed);
+            } else if (isDeleting && typingIndex === 0) {
+                isDeleting = false;
+                setTimeout(typeAnimation, typingSpeed);
+            }
+        }
+
+        typeAnimation();
+
+        // Mouse tracking for interactive elements
+        document.addEventListener('mousemove', (e) => {
+            const skillBadges = document.querySelectorAll('.skill-badge');
+            skillBadges.forEach(badge => {
+                const rect = badge.getBoundingClientRect();
+                const badgeX = rect.left + rect.width / 2;
+                const badgeY = rect.top + rect.height / 2;
+                const distanceX = e.clientX - badgeX;
+                const distanceY = e.clientY - badgeY;
+                const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+                
+                if (distance < 200) {
+                    const angle = Math.atan2(distanceY, distanceX);
+                    const forceX = Math.cos(angle) * (200 - distance) * 0.05;
+                    const forceY = Math.sin(angle) * (200 - distance) * 0.05;
+                    badge.style.transform = `translate(${-forceX}px, ${-forceY}px)`;
+                } else {
+                    badge.style.transform = 'translate(0, 0)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
